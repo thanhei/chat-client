@@ -84,7 +84,7 @@ const ChatRoom = () => {
             try {
 
                 if (activeTab === 'private') {
-                    const response = await axios.get('http://localhost:9000/chat/' + userData.username, {
+                    const response = await axios.get('https://chat-server-ub0t.onrender.com/chat/' + userData.username, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
@@ -93,7 +93,7 @@ const ChatRoom = () => {
 
                     setTabs(response.data);
                 } else {
-                    const response = await axios.get('http://localhost:9000/group/members/'+ userData.username, {
+                    const response = await axios.get('https://chat-server-ub0t.onrender.com/group/members/'+ userData.username, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
@@ -120,7 +120,7 @@ const ChatRoom = () => {
             try {
              
                 if (activeTab === 'private') {
-                    const response = await axios.get('http://localhost:9000/chat/messages/' + currentTabs.id, {
+                    const response = await axios.get('https://chat-server-ub0t.onrender.com/chat/messages/' + currentTabs.id, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
@@ -130,7 +130,7 @@ const ChatRoom = () => {
 
 
                 } else {
-                    const response = await axios.get('http://localhost:9000/group/messages/' + currentTabs.id, {
+                    const response = await axios.get('https://chat-server-ub0t.onrender.com/group/messages/' + currentTabs.id, {
                         headers: {
                             Authorization: `Bearer ${token}`,
                         },
@@ -161,7 +161,7 @@ const ChatRoom = () => {
             Authorization: `Bearer ${token}`
           };
 
-        let socket = new SockJS('http://localhost:9000/ws');
+        let socket = new SockJS('https://chat-server-ub0t.onrender.com/ws');
         
         stompClient = over(socket);
 
