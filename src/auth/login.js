@@ -19,10 +19,16 @@ const Login = () => {
              
                
 
-					axios.post('https://chat-server-ub0t.onrender.com/v1/login', {
-						username: "user123",
-						password: "user123"
-					  })
+				axios.post('https://chat-server-ub0t.onrender.com/v1/login', {
+					username: username,
+					password: password
+				}, {
+					withCredentials: true,
+					headers: {
+						'Content-Type': 'application/json',
+						'Access-Control-Allow-Origin': 'https://chat-client-8ra3.onrender.com'
+					}
+				})
 					  .then((response) => {
 						console.log(response);
 					  }, (error) => {
