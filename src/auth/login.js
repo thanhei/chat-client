@@ -19,7 +19,11 @@ const Login = () => {
              
                
 
-				axios.get('https://chat-server-ub0t.onrender.com/chat/messages/658305bb3594a356b0e48e08')
+				axios.get('https://chat-server-ub0t.onrender.com/chat/messages/658305bb3594a356b0e48e08',{ withCredentials: true,
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': 'https://chat-client-8ra3.onrender.com'
+				}})
 					  .then((response) => {
 						console.log(response);
 					  }, (error) => {
