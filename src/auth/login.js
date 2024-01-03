@@ -11,6 +11,9 @@ const Login = () => {
 	const [password, setPassword] = useState("");
 
 
+
+
+
 	const handleUsername = (event) => {
 		const { value } = event.target;
 		setUsername(value);
@@ -25,15 +28,9 @@ const Login = () => {
 
 	const handleLogin = () => {
 		cookies.remove("jwt_token");
-		axios.post('https://chat-server-ub0t.onrender.com/v1/login', {
+		axios.post('https://chat-server-ub0t.onrender/v1/login', {
 			username: username,
 			password: password
-		}, {
-			withCredentials: true,
-			headers: {
-				'Content-Type': 'application/json',
-				'Access-Control-Allow-Origin': 'https://chat-client-8ra3.onrender.com'
-			}
 		})
 			.then(function (response) {
 				console.log(response.data.id_token);
