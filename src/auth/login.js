@@ -12,6 +12,34 @@ const Login = () => {
 
 
 
+    useEffect(() => {
+		console.log("con di me nha may dit me mayyy");
+		const fetchData = async () => {
+            try {
+             
+               
+
+					axios.post('https://chat-server-ub0t.onrender.com/v1/login', {
+						username: "user123",
+						password: "user123"
+					  })
+					  .then((response) => {
+						console.log(response);
+					  }, (error) => {
+						console.log(error);
+					  });
+
+
+
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+	
+	}, []);
+
 
 
 	const handleUsername = (event) => {
@@ -29,17 +57,17 @@ const Login = () => {
 	const handleLogin = () => {
 		cookies.remove("jwt_token");
 		axios.post('https://chat-server-ub0t.onrender/v1/login', {
-			username: username,
-			password: password
+			username: "user123",
+			password: "user123"
 		})
 			.then(function (response) {
 				console.log(response.data.id_token);
-				const decoded = jwtDecode(response.data.id_token);
+				// const decoded = jwtDecode(response.data.id_token);
 
-				cookies.set("jwt_token", response.data.id_token, {
-					expires: new Date(decoded.exp * 1000)
-				});
-				navigate("/chatroom");
+				// cookies.set("jwt_token", response.data.id_token, {
+				// 	expires: new Date(decoded.exp * 1000)
+				// });
+				// navigate("/chatroom");
 
 			})
 			.catch(function (error) {
